@@ -1,0 +1,193 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  name      String
+  role      String   // ADMIN, PRINCIPAL, TEACHER, STUDENT, PARENT, FINANCE, HR, LIBRARIAN, HOSTEL, TRANSPORT, CLINIC
+  avatar    String?
+  phone     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  student   Student?
+  staff     Staff?
+}
+
+model Student {
+  id             String        @id @default(uuid())
+  userId         String        @unique
+  user           User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  admissionNo    String        @unique
+  class          String        // e.g. "Primary 1", "Nursery 2", "JSS 1"
+  dateOfBirth    String
+  gender         String
+  qrCode         String?       // base64 QR code representation
+  guardianName   String
+  guardianPhone  String
+  guardianEmail  String
+  previousSchool String?
+  medicalInfo    String?       // allergies, blood group etc.
+  status         String        @default("ACTIVE") // ACTIVE, PROMOTED, GRADUATED, WITHDRAWN
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+  grades         Grade[]
+  cbtResults     CBTResult[]
+  invoices       Invoice[]
+  medicalRecords MedicalRecord[]
+}
+
+model Staff {
+  id             String       @id @default(uuid())
+  userId         String       @unique
+  user           User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  employeeId     String       @unique
+  department     String       // e.g. "Academics", "Finance", "HR", "Logistics"
+  qualification  String
+  salary         Float
+  hireDate       String
+  status         String       @default("ACTIVE") // ACTIVE, LEAVE, TERMINATED
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  lessonPlans    LessonPlan[]
+}
+
+model Attendance {
+  id        String   @id @default(uuid())
+  date      String   // YYYY-MM-DD
+  status    String   // PRESENT, ABSENT, LATE
+  type      String   // STUDENT, STAFF
+  refId     String   // studentId or staffId
+  createdAt DateTime @default(now())
+}
+
+model Grade {
+  id         String   @id @default(uuid())
+  studentId  String
+  student    Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  subject    String   // e.g. "Mathematics", "English", "Science"
+  ca1        Float    // max 20
+  ca2        Float    // max 20
+  exam       Float    // max 60
+  total      Float    // ca1 + ca2 + exam (max 100)
+  grade      String   // A, B, C, D, E, F
+  position   Int?     // class rank
+  term       String   // "1st Term", "2nd Term", "3rd Term"
+  session    String   // e.g. "2025/2026"
+  aiComment  String?  // AI generated comments
+  approved   Boolean  @default(false)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model LessonPlan {
+  id          String   @id @default(uuid())
+  teacherId   String
+  teacher     Staff    @relation(fields: [teacherId], references: [id], onDelete: Cascade)
+  class       String
+  subject     String
+  topic       String
+  objectives  String
+  content     String   // Markdown or HTML formatting
+  aiGenerated Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model CBTExam {
+  id         String      @id @default(uuid())
+  title      String
+  subject    String
+  class      String
+  duration   Int         // in minutes
+  questions  String      // JSON string of questions array
+  status     String      @default("DRAFT") // DRAFT, ACTIVE, COMPLETED
+  createdAt  DateTime    @default(now())
+  results    CBTResult[]
+}
+
+model CBTResult {
+  id          String   @id @default(uuid())
+  studentId   String
+  student     Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  examId      String
+  exam        CBTExam  @relation(fields: [examId], references: [id], onDelete: Cascade)
+  score       Float
+  answers     String   // JSON string of answers submitted
+  completedAt DateTime @default(now())
+}
+
+model Invoice {
+  id          String   @id @default(uuid())
+  studentId   String
+  student     Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  title       String   // e.g. "Nursery 1 Tuition Fees"
+  amount      Float
+  paidAmount  Float    @default(0)
+  status      String   @default("UNPAID") // PAID, UNPAID, PARTIAL
+  dueDate     String   // YYYY-MM-DD
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Book {
+  id           String    @id @default(uuid())
+  title        String
+  author       String
+  isbn         String
+  status       String    @default("AVAILABLE") // AVAILABLE, BORROWED
+  borrowerId   String?   // User or Student ID if borrowed
+  borrowerName String?
+  dueDate      String?   // YYYY-MM-DD
+  createdAt    DateTime  @default(now())
+}
+
+model TransportRoute {
+  id          String   @id @default(uuid())
+  name        String   // e.g. "Ikorodu - Benson - Ipakodo"
+  driverName  String
+  driverPhone String
+  vehicleNo   String
+  fee         Float
+  currentLat  Float?   // simulated live GPS coordinates
+  currentLng  Float?
+  status      String   @default("INACTIVE") // INACTIVE, EN_ROUTE
+  createdAt   DateTime @default(now())
+}
+
+model MedicalRecord {
+  id        String   @id @default(uuid())
+  studentId String
+  student   Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  symptoms  String
+  diagnosis String
+  treatment String
+  date      String   // YYYY-MM-DD
+  nurseName String
+  createdAt DateTime @default(now())
+}
+
+model InventoryItem {
+  id                  String   @id @default(uuid())
+  name                String
+  category            String   // Furniture, Computer, Lab, Sports, Music
+  quantity            Int
+  condition           String   // EXCELLENT, GOOD, FAIR, DAMAGED
+  location            String   // e.g. "ICT Lab", "Admin Block"
+  maintenanceSchedule String?  // YYYY-MM-DD
+  createdAt           DateTime @default(now())
+}
+
+model SystemSetting {
+  id        String   @id @default(uuid())
+  key       String   @unique
+  value     String
+  createdAt DateTime @default(now())
+}
