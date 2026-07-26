@@ -55,7 +55,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-montserrat font-bold text-sm text-primary dark:text-white">Campus Address</h4>
-                  <p className="mt-1 text-slate-500">Ikorodu Benson Area, Lagos State, Nigeria</p>
+                  <p className="mt-1 text-slate-500">123 High IQ Avenue, Ikorodu, Lagos State, Nigeria</p>
                 </div>
               </div>
               <div className="flex items-center gap-4 border-b border-slate-100 dark:border-dark-border pb-4 last:border-0 last:pb-0">
@@ -64,8 +64,8 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-montserrat font-bold text-sm text-primary dark:text-white">Phone Support</h4>
-                  <p className="mt-1 text-slate-500">Admissions desk: +234 801 234 5678</p>
-                  <p className="text-slate-500">Principal office: +234 802 345 6789</p>
+                  <p className="mt-1 text-slate-500">Admissions desk: 0803 123 4567</p>
+                  <p className="text-slate-500">Principal office: 0812 345 6789</p>
                 </div>
               </div>
               <div className="flex items-center gap-4 border-b border-slate-100 dark:border-dark-border pb-4 last:border-0 last:pb-0">
@@ -74,8 +74,8 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-montserrat font-bold text-sm text-primary dark:text-white">Email Inbox</h4>
-                  <p className="mt-1 text-slate-500">info@highiqmontessori.sch.ng</p>
-                  <p className="text-slate-500">admissions@highiqmontessori.sch.ng</p>
+                  <p className="mt-1 text-slate-500">info@highiqmontessori.edu.ng</p>
+                  <p className="text-slate-500">admissions@highiqmontessori.edu.ng</p>
                 </div>
               </div>
             </div>

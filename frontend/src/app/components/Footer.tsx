@@ -47,15 +47,15 @@ export const Footer: React.FC = () => {
           <div className="flex flex-col gap-2 mt-2">
             <div className="flex items-center gap-2 text-slate-300 text-xs">
               <MapPin className="h-4 w-4 text-gold flex-shrink-0" />
-              <span>Ikorodu, Lagos, Nigeria</span>
+              <span>123 High IQ Avenue, Ikorodu, Lagos State, Nigeria</span>
             </div>
             <div className="flex items-center gap-2 text-slate-300 text-xs">
               <Phone className="h-4 w-4 text-gold flex-shrink-0" />
-              <span>+234 801 234 5678</span>
+              <span>0803 123 4567, 0812 345 6789</span>
             </div>
             <div className="flex items-center gap-2 text-slate-300 text-xs">
               <Mail className="h-4 w-4 text-gold flex-shrink-0" />
-              <span>info@highiqmontessori.sch.ng</span>
+              <span>info@highiqmontessori.edu.ng</span>
             </div>
           </div>
         </div>

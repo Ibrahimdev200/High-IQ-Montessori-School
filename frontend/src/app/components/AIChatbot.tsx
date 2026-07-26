@@ -58,9 +58,9 @@ export const AIChatbot: React.FC = () => {
       } else if (text.includes('robotics') || text.includes('coding') || text.includes('stem')) {
         botResponse = 'High IQ Montessori School is a pioneer in technological education. Our students build and code functional robots, study Scratch and Python, and participate in global STEM science exhibitions.';
       } else if (text.includes('phone') || text.includes('contact') || text.includes('call') || text.includes('email')) {
-        botResponse = 'You can reach our main admissions frontdesk at +234 801 234 5678 or email us directly at info@highiqmontessori.sch.ng. We also have a Live WhatsApp chat button on our website contact page!';
+        botResponse = 'You can reach our main admissions frontdesk at 0803 123 4567 or 0812 345 6789, or email us directly at info@highiqmontessori.edu.ng. We also have a Live WhatsApp chat button on our website contact page!';
       } else {
-        botResponse = "I appreciate your question! High IQ Montessori School offers dedicated Montessori instruction, premium STEM courses, and world-class care. You can find detailed files in the 'Admissions' menu, or call our enrollment officer at +234 801 234 5678.";
+        botResponse = "I appreciate your question! High IQ Montessori School offers dedicated Montessori instruction, premium STEM courses, and world-class care. You can find detailed files in the 'Admissions' menu, or call our enrollment officer at 0803 123 4567 or 0812 345 6789.";
       }
 
       setMessages(prev => [...prev, { sender: 'bot', text: botResponse, timestamp: new Date() }]);

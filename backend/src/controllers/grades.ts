@@ -197,9 +197,10 @@ export const exportReportCardPDF = async (req: Request, res: Response): Promise<
        .fontSize(22)
        .text('HIGH IQ MONTESSORI SCHOOL', 50, 40, { align: 'center', wordSpacing: 2 });
 
-    doc.fontSize(10)
+    doc.fontSize(8)
        .fillColor('#333333')
-       .text('Ikorodu, Lagos, Nigeria | Info@highiqmontessori.sch.ng', 50, 65, { align: 'center' })
+       .text('123 High IQ Avenue, Ikorodu, Lagos State, Nigeria | info@highiqmontessori.edu.ng', 50, 65, { align: 'center' })
+       .fontSize(10)
        .text('ACADEMIC REPORT CARD', 50, 80, { align: 'center', underline: true });
 
     doc.moveDown();

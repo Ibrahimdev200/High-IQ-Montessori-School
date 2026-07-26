@@ -217,21 +217,21 @@ export default function Home() {
           <div className="relative w-full lg:w-1/3 aspect-[4/5] bg-slate-200 dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg border-2 border-gold/40">
             {/* Fallback pattern simulating photo */}
             <div className="absolute inset-0 bg-gradient-to-b from-primary/20 to-slate-900/90 flex flex-col justify-end p-6 text-white text-center">
-              <h4 className="font-bold text-lg">Mrs. Adewale Cynthia</h4>
-              <p className="text-gold text-xs">Director of Academics & School Principal</p>
+              <h4 className="font-bold text-lg">Mrs. Edu</h4>
+              <p className="text-gold text-xs">School Principal</p>
             </div>
           </div>
 
           <div className="flex-1 flex flex-col justify-center">
-            <span className="text-gold uppercase font-bold text-xs tracking-widest font-poppins">DIRECTOR'S WELCOME</span>
+            <span className="text-gold uppercase font-bold text-xs tracking-widest font-poppins">LEADER. MENTOR. EDUCATOR.</span>
             <h2 className="font-montserrat font-extrabold text-3xl sm:text-4xl text-primary dark:text-white mt-2">
-              Preparing Minds For A Digital Tomorrow
+              Principal's Welcome Message
             </h2>
             <p className="text-slate-600 dark:text-slate-400 font-poppins text-sm leading-relaxed mt-6">
-              "At High IQ Montessori School, we believe that education is not the filling of a bucket, but the lighting of a fire. Rooted in the rich soil of Ikorodu, Lagos, we have designed an environment where curiosity is celebrated, science is played, and leadership is lived. 
+              "Every child is unique, every child is capable, and together, we build a brighter future."
             </p>
             <p className="text-slate-600 dark:text-slate-400 font-poppins text-sm leading-relaxed mt-4">
-              Our unique synthesis of Montessori sensory tools and coding labs prepares pupils not just for examinations, but to be innovators on the global stage. We welcome you to join our family."
+              With passion, dedication and a heart for children, Mrs. Edu provides visionary leadership and a nurturing environment where every child is encouraged to explore, learn and excel.
             </p>
             <Link
               href="/about"

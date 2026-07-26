@@ -10,7 +10,7 @@ export default function News() {
     {
       title: 'The Value of Tactile Mathematics in Montessori',
       date: 'July 15, 2026',
-      author: 'Mrs. Adewale Cynthia',
+      author: 'Mrs. Edu',
       summary: 'Why counting wooden beads and concrete scales helps kindergarten kids conceptualize algebra faster than simple memory recall worksheets.',
     },
     {

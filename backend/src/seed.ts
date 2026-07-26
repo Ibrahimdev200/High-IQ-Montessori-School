@@ -41,9 +41,9 @@ async function main() {
     data: {
       email: 'principal@highiq.edu.ng',
       password: hashedPassword,
-      name: 'Mrs. Adewale Cynthia',
+      name: 'Mrs. Edu',
       role: 'PRINCIPAL',
-      phone: '+234 802 345 6789'
+      phone: '0803 123 4567'
     }
   });
 
