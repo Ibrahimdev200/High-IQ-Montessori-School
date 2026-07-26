@@ -214,9 +214,13 @@ export default function Home() {
       {/* Leadership Message Card */}
       <section className="py-16 bg-white dark:bg-dark-card transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row gap-12 items-center">
-          <div className="relative w-full lg:w-1/3 aspect-[4/5] bg-slate-200 dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg border-2 border-gold/40">
-            {/* Fallback pattern simulating photo */}
-            <div className="absolute inset-0 bg-gradient-to-b from-primary/20 to-slate-900/90 flex flex-col justify-end p-6 text-white text-center">
+          <div className="relative w-full lg:w-1/3 aspect-[4/5] rounded-2xl overflow-hidden shadow-lg border-2 border-gold/40">
+            <img
+              src="/principal.jpg"
+              alt="Mrs. Edu - High IQ Montessori School Principal"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-transparent to-transparent flex flex-col justify-end p-6 text-white text-center">
               <h4 className="font-bold text-lg">Mrs. Edu</h4>
               <p className="text-gold text-xs">School Principal</p>
             </div>
